@@ -1,0 +1,11 @@
+name: Build and test
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Go
+        uses: actions/setup-go@v2
+      - name: Run build
+        run: go build -o marathon-explorer cmd/marathon-explorer.go
