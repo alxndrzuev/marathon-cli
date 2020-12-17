@@ -59,20 +59,12 @@ func main() {
 	}
 
 	err := app.Run(os.Args)
-	if err != nil {log.Fatal(err)}
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func printResult(result [][]string) {
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader(result[0])
-
-	for _, v := range result[1:] {
-		table.Append(v)
-	}
-	table.Render()
-}
-
-func printResultt(result [][]string) {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader(result[0])
 

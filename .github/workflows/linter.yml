@@ -1,8 +1,8 @@
-name: golangci-lint
+name: Linter check
 on: pull_request
 jobs:
-  golangci:
-    name: lint
+  lint:
+    name: Linter check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

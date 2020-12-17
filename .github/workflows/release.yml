@@ -1,11 +1,9 @@
 name: Publish release
-
 on:
   pull_request:
     types: closed
-
 jobs:
-  build:
+  release:
     name: Publish release
     runs-on: ubuntu-latest
     steps:
