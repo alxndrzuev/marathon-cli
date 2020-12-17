@@ -1,9 +1,9 @@
+name: Publish release
+
 on:
   push:
     branches:
       - master
-
-name: Publish release
 
 jobs:
   build:
