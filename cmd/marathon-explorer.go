@@ -71,3 +71,13 @@ func printResult(result [][]string) {
 	}
 	table.Render()
 }
+
+func printResultt(result [][]string) {
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader(result[0])
+
+	for _, v := range result[1:] {
+		table.Append(v)
+	}
+	table.Render()
+}
