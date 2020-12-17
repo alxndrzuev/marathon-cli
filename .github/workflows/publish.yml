@@ -10,6 +10,8 @@ jobs:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Create tag
         id: create_tag
         uses: K-Phoen/semver-release-action@master
@@ -18,8 +20,6 @@ jobs:
           release_strategy: tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Run build
         run: go build -o marathon_explorer cmd/marathon-explorer.go
       - name: Create Release
