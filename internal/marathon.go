@@ -1,4 +1,4 @@
-package marathon
+package internal
 
 import (
 	"github.com/gambol99/go-marathon"
@@ -15,12 +15,11 @@ type Application struct {
 	Cpu       float64
 }
 
-func GetApplications(marathonUrl string, marathonLogin string, marathonPassword string) []Application {
+func GetApplicationsFromMarathon(marathonUrl string, marathonLogin string, marathonPassword string) []Application {
 	client := buildClient(marathonUrl, marathonLogin, marathonPassword)
 	apps, err := client.Applications(nil)
 	if err != nil {
 		log.Fatalf("Failed to get applications from marathon, error: %s", err)
-		return nil
 	}
 	var result []Application
 
