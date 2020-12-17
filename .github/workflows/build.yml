@@ -1,17 +1,11 @@
 name: Build and test
-
-on: [push, pull_request]
-
+on: pull_request
 jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Go
+      - name: setup Go
         uses: actions/setup-go@v2
-      - name: Install dependencies
-        run: |
-          go version
-          go get -u golang.org/x/lint/golint
       - name: Run build
         run: go build -o marathon-explorer cmd/marathon-explorer.go
