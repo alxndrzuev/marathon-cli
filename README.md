@@ -12,7 +12,7 @@ __help, h__ - Shows a list of commands or help for one command
 __--url value, -u value__ - marathon url  
 __--user value, -U value__ - marathon basic auth user  
 __--password value, -p value__ - marathon basic auth password  
-__--project value, -P value__ - filter information by project  
+__--project value, -P value__ - filter information by project. For filter by multiple projects use multiple flags, e.g. `-P project1 -P project2`  
 __--instances value, -i value__ - filter information by instances count (default: 0)  
 __--image value, -I value__ - filter information by image substring  
 __--help, -h__ - show help (default: false)  
