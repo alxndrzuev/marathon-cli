@@ -4,12 +4,14 @@ import (
 	"github.com/olekukonko/tablewriter"
 	"github.com/urfave/cli/v2"
 	"log"
-	"marathon-explorer/internal"
+	"marathon-explorer/internal/command"
 	"os"
 )
 
 func main() {
 	app := &cli.App{
+		Name:  "Marathon Explorer",
+		Usage: "command line tool for getting information from a Mesos+Marathon cluster",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "url",
@@ -27,7 +29,7 @@ func main() {
 				Aliases: []string{"p"},
 				Usage:   "marathon basic auth password",
 			},
-			&cli.StringFlag{
+			&cli.StringSliceFlag{
 				Name:    "project",
 				Aliases: []string{"P"},
 				Usage:   "filter information by project",
@@ -43,14 +45,12 @@ func main() {
 				Usage:   "filter information by image substring",
 			},
 		},
-		Name:  "Marathon Explorer",
-		Usage: "command line tool for getting information from a Mesos+Marathon cluster",
 		Commands: []*cli.Command{
 			{
 				Name:  "applications",
 				Usage: "get full info about applications",
 				Action: func(c *cli.Context) error {
-					result := internal.GetApplications(c)
+					result := command.GetApplications(c)
 					printResult(result)
 					return nil
 				},
@@ -68,8 +68,8 @@ func printResult(result [][]string) {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader(result[0])
 
-	for _, v := range result[1:] {
-		table.Append(v)
+	for _, r := range result[1:] {
+		table.Append(r)
 	}
 	table.Render()
 }
